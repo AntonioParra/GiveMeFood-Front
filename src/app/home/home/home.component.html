@@ -1,0 +1,19 @@
+<header>
+    <mat-toolbar color="primary">
+        <span>Give Me Food</span>
+        <span class="flexSpacer"></span>
+        <span>{{ user?.nombre }}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar>
+</header>
+
+
+
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="salir()">
+        <span>Salir</span>
+    </button>
+</mat-menu>

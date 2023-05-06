@@ -1,0 +1,25 @@
+<div class="container">
+
+<mat-card class="card">
+    <mat-card-header class="header">
+        <h1>Give Me Food</h1>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-form-field class="fullWidth">
+            <mat-label>Usuario</mat-label>
+            <input matInput [(ngModel)]="username" type="text">
+        </mat-form-field>
+        <mat-form-field class="fullWidth">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [(ngModel)]="password" type="password">
+        </mat-form-field>
+        <div><mat-checkbox [(ngModel)]="remember" (change)="onChangeRemember($event)">Recuérdame</mat-checkbox></div>
+        <div><span *ngIf="!!mensaje" class="colorWarn">{{ mensaje }}</span></div>
+        
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-raised-button class="button" color="accent" (click)="doLogin()">Entrar</button>
+    </mat-card-actions>
+</mat-card>
+
+</div>
