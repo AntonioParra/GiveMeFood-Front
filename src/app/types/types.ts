@@ -1,8 +1,15 @@
-export interface HTTPLogin {
+export interface CuberiteHTTPResponse {
     MESSAGE: string,
     STATE: string,
-    TOKEN: string,
+    TOKEN: string
+}
+
+export interface HTTPLogin extends CuberiteHTTPResponse {
     USUARIO: Usuario
+}
+
+export interface HTTPFind extends CuberiteHTTPResponse {
+    RESTAURANTES: Restaurante[]
 }
 
 export interface Usuario {
@@ -10,4 +17,17 @@ export interface Usuario {
     nombre: string,
     apellido: string,
     email: string
+}
+
+export interface Restaurante {
+    cartaLink: string,
+    coordenadaX: number,
+    coordenadaY: number,
+    direccion: string,
+    googleMapLink: string,
+    nombre: string,
+    rangoPrecioMax: number,
+    rangoPrecioMin: number
+    valoracionMedia: number,
+    valoraciones: number
 }

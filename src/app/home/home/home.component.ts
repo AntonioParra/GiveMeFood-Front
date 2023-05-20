@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Usuario } from 'src/app/types/types';
+import { RatingsService } from 'src/app/services/ratings.service';
+import { RestaurantsService } from 'src/app/services/restaurants.service';
+import { Restaurante, Usuario } from 'src/app/types/types';
 
 @Component({
   selector: 'app-home',
@@ -10,14 +12,25 @@ import { Usuario } from 'src/app/types/types';
 export class HomeComponent implements OnInit {
 
   public user: Usuario | undefined;
+  public restaurantes: Restaurante[] = [];
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private restaurantsService: RestaurantsService
   ) {}
 
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
+    this.loadRestaurants();
+    
+  }
+
+
+  loadRestaurants() {
+    this.restaurantsService.getRestaurantes().subscribe(data => {
+      this.restaurantes = data;
+    });
   }
 
 

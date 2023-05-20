@@ -7,13 +7,19 @@
             <mat-icon>menu</mat-icon>
         </button>
     </mat-toolbar>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="salir()">
+            <span>Salir</span>
+        </button>
+    </mat-menu>
 </header>
 
 
+<app-restaurante-card *ngFor="let restaurante of restaurantes" [restaurante]="restaurante">
+
+</app-restaurante-card>
 
 
-<mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="salir()">
-        <span>Salir</span>
-    </button>
-</mat-menu>
+
+

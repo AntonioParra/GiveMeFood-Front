@@ -65,15 +65,18 @@ $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
 
 .colorPrimary {
-  color: $warn;
+  color: $primary;
 }
 .colorAccent {
-  color: $warn;
+  color: $accent;
 }
 .colorWarn {
   color: $warn;
 }
 
+a {
+  color: $accent; 
+}
 
 .fullWidth {
   width: 100%;

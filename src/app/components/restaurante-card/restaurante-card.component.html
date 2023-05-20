@@ -1,0 +1,42 @@
+<mat-accordion>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{ restaurante?.nombre }}
+            </mat-panel-title>
+            <mat-panel-description>
+                <mat-icon class="applyColor" [class]="{
+                    'color0': ratingsService.checkColor(0, restaurante?.valoracionMedia!), 
+                    'color1': ratingsService.checkColor(1, restaurante?.valoracionMedia!), 
+                    'color2': ratingsService.checkColor(2, restaurante?.valoracionMedia!), 
+                    'color3': ratingsService.checkColor(3, restaurante?.valoracionMedia!)}" 
+                [fontIcon]="ratingsService.getValoracionIconName(restaurante?.valoracionMedia!)"></mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div *ngIf="getPrecios()">
+            <span>Precio: </span>
+            {{ getPrecios() }}
+        </div>
+        <div>
+            <span>Tu valoración</span>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(3)" class="color3" [class]="{'applyColor': ratingsService.checkValoracionSelected(3, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(2)" class="color2" [class]="{'applyColor': ratingsService.checkValoracionSelected(2, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(1)" class="color1" [class]="{'applyColor': ratingsService.checkValoracionSelected(1, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(0)" class="color0" [class]="{'applyColor': ratingsService.checkValoracionSelected(0, restaurante!)}"></mat-icon>
+        </div>
+        <div *ngIf="restaurante?.cartaLink">
+            <span>Carta: </span>
+            <a (click)="openCarta()">Ver carta</a>
+        </div>
+        <div *ngIf="restaurante?.googleMapLink || restaurante?.direccion">
+            <span>Dirección: </span>
+            {{ restaurante?.direccion }}</div>
+        <div *ngIf="restaurante?.googleMapLink || restaurante?.direccion">
+            <span>Google Maps: </span>
+            <a (click)="openGoogleMaps()">Abrir mapa</a>
+        </div>
+        <div>
+            <span>mapa integrado</span>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
