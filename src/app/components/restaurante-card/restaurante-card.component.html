@@ -35,8 +35,13 @@
             <span>Google Maps: </span>
             <a (click)="openGoogleMaps()">Abrir mapa</a>
         </div>
-        <div>
+        <div *ngIf="!!mapOptions">
             <span>mapa integrado</span>
+            <div style="height: 300px;"
+                leaflet 
+                [leafletOptions]="mapOptions"
+                [leafletLayers]="mapLayers">
+            </div>
         </div>
     </mat-expansion-panel>
 </mat-accordion>

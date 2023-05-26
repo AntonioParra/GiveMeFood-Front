@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { RestauranteCardComponent } from '../components/restaurante-card/restaurante-card.component';
 import { MatCardModule } from '@angular/material/card';
 
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { MatCardModule } from '@angular/material/card';
     MatButtonModule,
     MatMenuModule,
     MatCardModule,
-    MatExpansionModule
+    MatExpansionModule,
+    LeafletModule
   ]
 })
 export class HomeModule { }

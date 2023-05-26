@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { latLng, marker, tileLayer, icon, Icon } from 'leaflet';
 import { RatingsService } from 'src/app/services/ratings.service';
 import { Restaurante } from 'src/app/types/types';
 
@@ -7,14 +8,36 @@ import { Restaurante } from 'src/app/types/types';
   templateUrl: './restaurante-card.component.html',
   styleUrls: ['./restaurante-card.component.scss']
 })
-export class RestauranteCardComponent {
+export class RestauranteCardComponent implements OnChanges{
 
   @Input()
   public restaurante: Restaurante | undefined;
 
+  public mapOptions: any = null;
+  public mapLayers: any = null;
+
   constructor(
     protected ratingsService: RatingsService
   ) {}
+
+  ngOnChanges(): void {
+    this.mapOptions = {
+      layers: [
+        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '' })
+      ],
+      zoom: 16,
+      center: latLng(this.restaurante?.coordenadaX!, this.restaurante?.coordenadaY!)
+    };
+    this.mapLayers = [
+      marker([ this.restaurante?.coordenadaX!, this.restaurante?.coordenadaY! ], {
+        icon: icon({
+          ...Icon.Default.prototype.options,
+          iconUrl: 'assets/marker-icon.png',
+          iconRetinaUrl: 'assets/marker-icon-2x.png',
+          shadowUrl: 'assets/marker-shadow.png'
+        })})
+    ]
+  }
 
 
   getPrecios(): string {

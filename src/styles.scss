@@ -54,6 +54,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /************************************************/
 
 @import '@angular/material/theming';
+@import "~leaflet/dist/leaflet.css";
 // Copy the palettes from your selected theme (usually theme.scss).
 $app-primary: mat-palette($GiveMeFood-Front-primary);
 $app-accent:  mat-palette($GiveMeFood-Front-accent);
