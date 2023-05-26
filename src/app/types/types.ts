@@ -22,6 +22,22 @@ export interface Restaurante {
     nombre: string,
     rangoPrecioMax: number,
     rangoPrecioMin: number
-    valoracionMedia: number,
-    valoraciones: number
+    valoracionUsuario: number,
+    GMFRestaurantesTagsCollection: Tag[],
+    GMFValoracionesCollection: Rating[]
+}
+
+export interface Tag {
+    IDRestauranteTag: number,
+    IDTagFK: {
+        IDTag: number,
+        nombreTag: string,
+        tipoTag: string;
+    }
+}
+
+export interface Rating {
+    IDUsuarioFK: number,
+    IDValoraciones: number,
+    valoracion: number
 }

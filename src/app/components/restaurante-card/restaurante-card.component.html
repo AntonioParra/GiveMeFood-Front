@@ -6,11 +6,11 @@
             </mat-panel-title>
             <mat-panel-description>
                 <mat-icon class="applyColor" [class]="{
-                    'color0': ratingsService.checkColor(0, restaurante?.valoracionMedia!), 
-                    'color1': ratingsService.checkColor(1, restaurante?.valoracionMedia!), 
-                    'color2': ratingsService.checkColor(2, restaurante?.valoracionMedia!), 
-                    'color3': ratingsService.checkColor(3, restaurante?.valoracionMedia!)}" 
-                [fontIcon]="ratingsService.getValoracionIconName(restaurante?.valoracionMedia!)"></mat-icon>
+                    'color0': ratingsService.checkColor(0, ratingsService.getValoracionMedia(restaurante!)), 
+                    'color1': ratingsService.checkColor(1, ratingsService.getValoracionMedia(restaurante!)), 
+                    'color2': ratingsService.checkColor(2, ratingsService.getValoracionMedia(restaurante!)), 
+                    'color3': ratingsService.checkColor(3, ratingsService.getValoracionMedia(restaurante!))}" 
+                [fontIcon]="ratingsService.getValoracionIconName(ratingsService.getValoracionMedia(restaurante!))"></mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
         <div *ngIf="getPrecios()">
