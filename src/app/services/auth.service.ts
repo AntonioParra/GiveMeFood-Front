@@ -6,7 +6,7 @@ import { BehaviorSubject, catchError, from, map, Observable, tap } from 'rxjs';
 
 import { of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
-import { HTTPLogin, Usuario } from '../types/types';
+import { CuberiteHTTPResponse, Usuario } from '../types/types';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class AuthService {
         'Authorization': 'Basic ' + btoa(username + ':' + password)
       })
     }).pipe(
-      tap(response => this.storeData(response as HTTPLogin)),
+      tap(response => this.storeData(response as CuberiteHTTPResponse<Usuario>)),
       map(response => true),
       catchError(error => {
         this.clearData();
@@ -54,7 +54,7 @@ export class AuthService {
 
 
 
-  public storeData(data: HTTPLogin): void {
+  public storeData(data: CuberiteHTTPResponse<Usuario>): void {
     localStorage.setItem('session/token', data.TOKEN);
     localStorage.setItem('session/user', JSON.stringify(data.DATA));
   }

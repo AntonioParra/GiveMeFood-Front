@@ -1,19 +1,8 @@
-export interface CuberiteHTTPResponse {
+export interface CuberiteHTTPResponse<T> {
     MESSAGE: string,
     STATE: string,
-    TOKEN: string
-}
-
-export interface HTTPLogin extends CuberiteHTTPResponse {
-    DATA: Usuario
-}
-
-export interface HTTPFind extends CuberiteHTTPResponse {
-    DATA: Restaurante[]
-}
-
-export interface HTTPGet extends CuberiteHTTPResponse {
-    DATA: Restaurante
+    TOKEN: string,
+    DATA: T
 }
 
 export interface Usuario {
