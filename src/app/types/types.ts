@@ -5,11 +5,11 @@ export interface CuberiteHTTPResponse {
 }
 
 export interface HTTPLogin extends CuberiteHTTPResponse {
-    USUARIO: Usuario
+    DATA: Usuario
 }
 
 export interface HTTPFind extends CuberiteHTTPResponse {
-    RESTAURANTES: Restaurante[]
+    DATA: Restaurante[]
 }
 
 export interface Usuario {

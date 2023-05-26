@@ -14,7 +14,7 @@ export class RestaurantsService {
   public getRestaurantes(): Observable<Restaurante[]> {
     return this.http.get(environment.baseUrl + '/givemefood/restaurantes/find').pipe(
       map(data => data as HTTPFind),
-      map(data => data.RESTAURANTES)
+      map(data => data.DATA)
     );
   }
 }

@@ -56,7 +56,7 @@ export class AuthService {
 
   public storeData(data: HTTPLogin): void {
     localStorage.setItem('session/token', data.TOKEN);
-    localStorage.setItem('session/user', JSON.stringify(data.USUARIO));
+    localStorage.setItem('session/user', JSON.stringify(data.DATA));
   }
 
   public clearData(): void {
