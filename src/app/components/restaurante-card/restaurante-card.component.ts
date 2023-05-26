@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { latLng, marker, tileLayer, icon, Icon } from 'leaflet';
 import { RatingsService } from 'src/app/services/ratings.service';
 import { Restaurante } from 'src/app/types/types';
+import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 @Component({
   selector: 'app-restaurante-card',
@@ -17,7 +18,8 @@ export class RestauranteCardComponent implements OnChanges{
   public mapLayers: any = null;
 
   constructor(
-    protected ratingsService: RatingsService
+    protected ratingsService: RatingsService,
+    private restaurantsService: RestaurantsService
   ) {}
 
   ngOnChanges(): void {
@@ -37,6 +39,10 @@ export class RestauranteCardComponent implements OnChanges{
           shadowUrl: 'assets/marker-shadow.png'
         })})
     ]
+  }
+
+  reload(): void {
+    this.restaurantsService.getRestaurante(this.restaurante!).subscribe(data => this.restaurante = data);
   }
 
 
@@ -68,5 +74,10 @@ export class RestauranteCardComponent implements OnChanges{
 
   openCarta(): void {
     window.open(this.restaurante?.cartaLink, '_blank');
+  }
+
+  rate(rate: number): void {
+    // this.restaurante.valoracionPropia = rate;
+    this.ratingsService.rate(rate, this.restaurante!).subscribe(() => this.reload());
   }
 }

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Restaurante } from '../types/types';
+import { Observable, map, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RatingsService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   public getValoracionIconName(valoracion: number) {
     if (valoracion === 0) {
@@ -42,5 +45,14 @@ export class RatingsService {
     } else {
       return colorNumber === 3;
     }
+  }
+
+  public rate(rating: number, restaurante: Restaurante): Observable<any> {
+    return this.http.post(environment.baseUrl + '/givemefood/restaurantes/valoracion', {
+      valoracion: rating,
+      IDRestauranteFK: {
+        IDRestaurante: restaurante.IDRestaurante
+      }
+    });
   }
 }

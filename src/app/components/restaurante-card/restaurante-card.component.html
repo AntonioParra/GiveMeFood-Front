@@ -19,10 +19,10 @@
         </div>
         <div>
             <span>Tu valoración</span>
-            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(3)" class="color3" [class]="{'applyColor': ratingsService.checkValoracionSelected(3, restaurante!)}"></mat-icon>
-            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(2)" class="color2" [class]="{'applyColor': ratingsService.checkValoracionSelected(2, restaurante!)}"></mat-icon>
-            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(1)" class="color1" [class]="{'applyColor': ratingsService.checkValoracionSelected(1, restaurante!)}"></mat-icon>
-            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(0)" class="color0" [class]="{'applyColor': ratingsService.checkValoracionSelected(0, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(3)" (click)="rate(3)" class="clickable color3" [class]="{'applyColor': ratingsService.checkValoracionSelected(3, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(2)" (click)="rate(2)" class="clickable color2" [class]="{'applyColor': ratingsService.checkValoracionSelected(2, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(1)" (click)="rate(1)" class="clickable color1" [class]="{'applyColor': ratingsService.checkValoracionSelected(1, restaurante!)}"></mat-icon>
+            <mat-icon [fontIcon]="ratingsService.getValoracionIconName(0)" (click)="rate(0)" class="clickable color0" [class]="{'applyColor': ratingsService.checkValoracionSelected(0, restaurante!)}"></mat-icon>
         </div>
         <div *ngIf="restaurante?.cartaLink">
             <span>Carta: </span>

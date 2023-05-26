@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { RatingsService } from 'src/app/services/ratings.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 import { Restaurante, Usuario } from 'src/app/types/types';
 

@@ -12,6 +12,10 @@ export interface HTTPFind extends CuberiteHTTPResponse {
     DATA: Restaurante[]
 }
 
+export interface HTTPGet extends CuberiteHTTPResponse {
+    DATA: Restaurante
+}
+
 export interface Usuario {
     apodo: string,
     nombre: string,
@@ -20,6 +24,7 @@ export interface Usuario {
 }
 
 export interface Restaurante {
+    IDRestaurante: number,
     cartaLink: string,
     coordenadaX: number,
     coordenadaY: number,
