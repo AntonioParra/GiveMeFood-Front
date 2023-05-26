@@ -6,10 +6,11 @@ export interface CuberiteHTTPResponse<T> {
 }
 
 export interface Usuario {
+    IDUsuario?: number,
     apodo: string,
     nombre: string,
     apellido: string,
-    email: string
+    email?: string
 }
 
 export interface Restaurante {
