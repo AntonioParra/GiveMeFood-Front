@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Filtrar Restaurantes</h2>
+
+<mat-dialog-content>
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Usuarios
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let user of users">
+                <mat-checkbox [(ngModel)]="user.selected">{{ user.user.apodo }}</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel *ngFor="let tipoTag of tags">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ tipoTag. nombre }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let tag of tipoTag.GMFTagsCollection">
+                <mat-checkbox [(ngModel)]="tag.selected">{{ tag.tag.nombreTag }}</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+</mat-dialog-content>
+
+
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="getSelected()">Filtrar</button>
+</mat-dialog-actions>
+

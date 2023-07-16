@@ -29,12 +29,14 @@ export interface Restaurante {
 }
 
 export interface Tag {
-    IDRestauranteTag: number,
-    IDTagFK: {
-        IDTag: number,
-        nombreTag: string,
-        tipoTag: string;
-    }
+    IDTag: number,
+    nombreTag: string
+}
+
+export interface TipoTag {
+    IDTipoTag:number,
+    nombre: string
+    GMFTagsCollection?: Tag[]
 }
 
 export interface Rating {

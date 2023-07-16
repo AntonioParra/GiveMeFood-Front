@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { forkJoin } from 'rxjs';
+import { RestaurantFilterPopupComponent } from 'src/app/components/restaurant-filter-popup/restaurant-filter-popup.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 import { UsersService } from 'src/app/services/users.service';
@@ -13,39 +16,51 @@ export class HomeComponent implements OnInit {
 
   public user: Usuario | undefined;
   public restaurantes: Restaurante[] = [];
-  public tags: Tag[] = [];
-  public users: Usuario[] = [];
+
+  public filter: {
+    users: Usuario[],
+    tags: Tag[]
+  } = {
+    users: [],
+    tags: []
+  };
 
   constructor(
     private authService: AuthService,
     private restaurantsService: RestaurantsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    public dialog: MatDialog
   ) {}
 
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
     this.loadRestaurants();
-    this.loadTags();
-    this.loadUsers();
   }
 
 
   loadRestaurants() {
-    this.restaurantsService.getRestaurantes().subscribe(data => {
+    this.restaurantsService.getRestaurantes(this.filter).subscribe(data => {
       this.restaurantes = data;
     });
   }
 
-  loadTags() {
-    this.restaurantsService.getTags().subscribe(data => {
-      this.tags = data;
-    });
-  }
-
-  loadUsers() {
-    this.usersService.getUsers().subscribe(data => {
-      this.users = data;
+  openFilterDialog() {
+    forkJoin([
+      this.usersService.getUsers(),
+      this.restaurantsService.getTiposTag()
+    ]).subscribe(datas => {
+      const popup = this.dialog.open(RestaurantFilterPopupComponent, {
+        data: {
+          users: datas[0],
+          tags: datas[1]
+        }
+      });
+  
+      popup.afterClosed().subscribe(selected => {
+        this.filter = selected;
+        this.loadRestaurants();
+      });
     });
   }
 
