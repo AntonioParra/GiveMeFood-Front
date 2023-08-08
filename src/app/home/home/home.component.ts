@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { forkJoin } from 'rxjs';
+import { AddRestaurantPopupComponent } from 'src/app/components/add-restaurant-popup/add-restaurant-popup.component';
 import { RestaurantFilterPopupComponent } from 'src/app/components/restaurant-filter-popup/restaurant-filter-popup.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
@@ -61,6 +62,24 @@ export class HomeComponent implements OnInit {
         this.filter = selected;
         this.loadRestaurants();
       });
+    });
+  }
+
+  openAddRestaurant() {
+    // forkJoin([
+    //   this.restaurantsService.getTiposTag()
+    // ]).subscribe(datas => {
+    //   const popup = this.dialog.open(AddRestaurantPopupComponent, {
+    //     data: {
+    //       tags: datas[0]
+    //     }
+    //   });
+    // });
+
+    const popup = this.dialog.open(AddRestaurantPopupComponent, {
+      data: {
+        tags: []
+      }
     });
   }
 

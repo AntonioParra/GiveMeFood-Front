@@ -12,6 +12,9 @@
     </mat-toolbar>
 
     <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openAddRestaurant()">
+            <span>Proponer restaurante</span>
+        </button>
         <button mat-menu-item (click)="salir()">
             <span>Salir</span>
         </button>

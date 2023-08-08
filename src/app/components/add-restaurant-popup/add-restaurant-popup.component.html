@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>Proponer Restaurante</h2>
+
+<mat-dialog-content>
+
+    <form></form>
+    <mat-form-field class="fullWidth">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="restaurante.nombre" type="text">
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+        <mat-label>Dirección</mat-label>
+        <input matInput [(ngModel)]="restaurante.direccion" type="text">
+    </mat-form-field>
+    <!-- <mat-form-field class="fullWidth"> -->
+        
+    <!-- </mat-form-field> -->
+    <mat-form-field class="fullWidth">
+        <mat-label>Link Carta</mat-label>
+        <input matInput [(ngModel)]="restaurante.cartaLink" type="text">
+    </mat-form-field>
+    <mat-form-field class="fullWidth">
+        <mat-label>Link Google Maps</mat-label>
+        <input matInput [(ngModel)]="restaurante.googleMapLink" type="text">
+    </mat-form-field>
+
+    <div>
+        <mat-label>Rango precios</mat-label>
+        <mat-slider min="1" max="40" discrete>
+            <input [(ngModel)]="restaurante.rangoPrecioMin" matSliderStartThumb>
+            <input [(ngModel)]="restaurante.rangoPrecioMax" matSliderEndThumb>
+        </mat-slider>
+    </div>
+    
+
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let tipoTag of tags">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{ tipoTag. nombre }}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngFor="let tag of tipoTag.GMFTagsCollection">
+                <mat-checkbox [(ngModel)]="tag.selected">{{ tag.tag.nombreTag }}</mat-checkbox>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div>
+        <span>Ubicación</span>
+        <div id='map' style="height: 200px;">
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="addRestaurant()">Proponer</button>
+</mat-dialog-actions>

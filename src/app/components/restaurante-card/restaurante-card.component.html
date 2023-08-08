@@ -35,7 +35,7 @@
             <span>Google Maps: </span>
             <a (click)="openGoogleMaps()">Abrir mapa</a>
         </div>
-        <div *ngIf="!!mapOptions">
+        <div *ngIf="showMap && !!mapOptions">
             <span>mapa integrado</span>
             <div style="height: 300px;"
                 leaflet 

@@ -16,14 +16,14 @@ export interface Usuario {
 export interface Restaurante {
     IDRestaurante: number,
     cartaLink: string,
-    coordenadaX: number,
-    coordenadaY: number,
+    coordenadaX: number | null,
+    coordenadaY: number | null,
     direccion: string,
     googleMapLink: string,
     nombre: string,
-    rangoPrecioMax: number,
-    rangoPrecioMin: number
-    valoracionUsuario: number,
+    rangoPrecioMax: number | null,
+    rangoPrecioMin: number | null,
+    valoracionUsuario: number | null,
     GMFRestaurantesTagsCollection: Tag[],
     GMFValoracionesCollection: Rating[]
 }

@@ -14,6 +14,7 @@ export class RestauranteCardComponent implements OnChanges{
   @Input()
   public restaurante: Restaurante | undefined;
 
+  public showMap: boolean = false;
   public mapOptions: any = null;
   public mapLayers: any = null;
 
@@ -23,12 +24,20 @@ export class RestauranteCardComponent implements OnChanges{
   ) {}
 
   ngOnChanges(): void {
+    if(!this.restaurante?.coordenadaX || !this.restaurante?.coordenadaY) {
+      return;
+    }
+
+    this.showMap = true;
     this.mapOptions = {
       layers: [
         tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '' })
       ],
       zoom: 16,
-      center: latLng(this.restaurante?.coordenadaX!, this.restaurante?.coordenadaY!)
+      center: latLng(this.restaurante?.coordenadaX!, this.restaurante?.coordenadaY!),
+      zoomControl: true,
+      scrollWheelZoom: false
+      
     };
     this.mapLayers = [
       marker([ this.restaurante?.coordenadaX!, this.restaurante?.coordenadaY! ], {

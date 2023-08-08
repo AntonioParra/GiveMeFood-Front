@@ -14,6 +14,7 @@ import { RestauranteCardComponent } from '../components/restaurante-card/restaur
 import { MatCardModule } from '@angular/material/card';
 
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
   imports: [
     CommonModule,
     HomeRoutingModule,
+    FormsModule,
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,

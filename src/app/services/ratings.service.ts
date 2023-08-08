@@ -36,12 +36,12 @@ export class RatingsService {
   }
 
   public checkValoracionSelected(colorNumber: number, restaurante: Restaurante) {
-    const valoracionMedia = this.getValoracionMedia(restaurante);
+    const valoracionMedia = this.getValoracionMedia(restaurante); // TODO no se esta usando
     if (restaurante.valoracionUsuario === 0) {
       return colorNumber === 0;
-    } else if (restaurante.valoracionUsuario < 1.5) {
+    } else if (restaurante.valoracionUsuario! < 1.5) {
       return colorNumber === 1;
-    } else if(restaurante.valoracionUsuario < 2.5) {
+    } else if(restaurante.valoracionUsuario! < 2.5) {
       return colorNumber === 2;
     } else {
       return colorNumber === 3;
